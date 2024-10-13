@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote name="lab"
+          fetch="https://github.com/c0smic-Lab/"
+          revision="15" />
+
+  <remote name="gitlab"
+          fetch="https://gitlab.com/" />
+
+  <remote name="minus"
+          fetch="https://github.com/MinusOS-AOSP"
+          revision="15.0-Kabini" />
+
+  <remote name="lab"
+          fetch="https://github.com/c0smic-Lab/"
+          revision="15" />
+
+  <remote name="AOSP-15-Dev"
+          fetch="https://github.com/AOSP-15-Dev/"
+          revision="android-15.0" />
+
+  <!-- General Repos -->
+  <project path="art" name="art" remote="minus" />
+  <project path="bootable/recovery" name="android_bootable_recovery" remote="minus" />
+  <project path="bootable/deprecated-ota" name="bootable_deprecated-ota" remote="minus" />
+  <project path="manifest" name="manifests" remote="minus" />
+  <project path="bionic" name="android_bionic" groups="pdk" remote="minus" />
+
+  <!-- Build Repos -->
+  <project path="build/make" name="android_build" groups="pdk,sysui-studio" remote="minus" >
+    <copyfile src="core/root.mk" dest="Makefile" />
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+
+  <project path="build/soong" name="android_build_soong" groups="pdk,tradefed" remote="minus" >
+    <linkfile src="root.bp" dest="Android.bp" />
+    <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
+  </project>
+
+  <!-- External Repos -->
+  <project path="external/dtc" name="external_dtc" remote="minus" />
+  <project path="external/libnl" name="external_libnl" remote="minus" />
+  <project path="external/gptfdisk" name="external_gptfdisk" remote="minus" />
+  <project path="external/mksh" name="external_mksh" remote="minus" />
+  <project path="external/libcxx" name="external_libcxx" groups="pdk" remote="minus" />
+  <project path="external/e2fsprogs" name="external_e2fsprogs" remote="minus" />
+  <project path="external/tinycompress" name="external_tinycompress" remote="minus" />
+  <project path="external/wpa_supplicant_8" name="external_wpa_supplicant_8" remote="minus" />
+  <project path="external/zstd" name="external_zstd" groups="pdk" remote="minus" />
+
+  <!-- Frameworks Repos -->
+  <project path="frameworks/av" name="android_frameworks_av" groups="pdk" remote="AOSP-15-Dev" />
+  <project path="frameworks/base" name="android_frameworks_base" groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="AOSP-15-Dev" />
+  <project path="frameworks/native" name="android_frameworks_native" groups="pdk" remote="AOSP-15-Dev" />
+  
+  <!-- Hardware Repos -->
+  <project path="hardware/google/pixel" name="hardware_google_pixel" remote="lab" />
+  <project path="hardware/interfaces" name="android_hardware_interfaces" groups="pdk" remote="AOSP-15-Dev" />
+  <project path="hardware/libhardware" name="hardware_libhardware" groups="pdk" remote="lab" />
+  <project path="hardware/qcom/wlan" name="hardware_qcom_wlan" remote="lab" />
+  <project path="hardware/ril" name="hardware_ril" remote="lab" />
+  <project path="hardware/lineage/interfaces" name="hardware_lineage_interfaces" remote="lab" />
+  <project path="hardware/lineage/compat" name="hardware_lineage_compat" remote="lab" />
+  
+  <!-- CAF Repos -->
+  <project path="hardware/qcom-caf/wlan" name="hardware_qcom-caf_wlan" groups="qcom,kailua-vendor" remote="lab" />
+  <project path="hardware/qcom-caf/sm8150/audio" name="hardware_qcom-caf_sm8150_audio" groups="qcom,msmnile" remote="lab" />
+  <project path="hardware/qcom-caf/sm8150/display" name="hardware_qcom-caf_sm8150_display" groups="qcom" remote="lab" />
+  <project path="vendor/qcom/opensource/data-ipa-cfg-mgr-legacy-um" name="vendor_qcom_opensource_data-ipa-cfg-mgr-legacy-um" groups="qcom,lahaina" remote="lab" />
+
+  <!-- Packages Repos -->
+  <project path="packages/modules/Bluetooth" name="packages_modules_Bluetooth" groups="pdk-cw-fs,pdk-fs" remote="lab" />
+  <project path="packages/modules/Connectivity" name="android_packages_modules_Connectivity" groups="pdk-cw-fs,pdk-fs" remote="AOSP-15-Dev" />
+
+  <!-- Vendor Repos -->
+  <project path="vendor/minus" name="android_vendor_minus" remote="minus" />
+
+  <!-- System Repos -->
+  <project path="system/core" name="android_system_core" groups="pdk" remote="AOSP-15-Dev" />
+  <project path="system/bpf" name="android_system_bpf" groups="pdk" remote="AOSP-15-Dev" />
+  <project path="system/libhidl" name="system_libhidl" remote="lab" />
+  <project path="system/security" name="system_security" remote="lab" />
+  <project path="system/sepolicy" name="android_system_sepolicy" groups="pdk" remote="AOSP-15-Dev" />
+  <project path="system/update_engine" name="system_update_engine" remote="lab" />
+  <project path="system/vold" name="system_vold" remote="lab" />
+  <project path="system/libziparchive" name="system_libziparchive" remote="lab" />
+  <project path="system/extras" name="system_extras" remote="lab" />
+</manifest>
